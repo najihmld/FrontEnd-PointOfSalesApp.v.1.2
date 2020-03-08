@@ -45,7 +45,7 @@ class Product extends Component {
         if(this.state.page > 1){
             query.push(`page=${this.state.page}`)
         }
-        axios.get('http://127.0.0.1:3001/products?'+query.join('&'))
+        axios.get(`${process.env.REACT_APP_API_HOST}/products?`+query.join('&'))
         .then(res => {
             this.setState({
                 dataProduct: res.data.data.items,
@@ -101,7 +101,7 @@ class Product extends Component {
             order: this.state.order
         }
         const body = qs.stringify(data)
-            axios.post('http://127.0.0.1:3001/orders', body)
+            axios.post(`${process.env.REACT_APP_API_HOST}/orders`, body)
             .then(res => {  
                     this.setState({
                         cart: [],
@@ -149,7 +149,7 @@ class Product extends Component {
     //     }
     //     console.log(body);
         
-    //     await axios.post('http://127.0.0.1:3001/orders', body).then(
+    //     await axios.post(`${process.env.REACT_APP_API_HOST}/orders`, body).then(
     //         res=>{
     //             this.setState({
     //                 cart: [],
@@ -161,7 +161,7 @@ class Product extends Component {
     sortLates = async(event, value) => {
         event.preventDefault()
         if(value !== ''){
-            await axios.get(`http://127.0.0.1:3001/products/?sortby=id DESC`)
+            await axios.get(`${process.env.REACT_APP_API_HOST}/products/?sortby=id DESC`)
             .then(res => {
                 this.setState((prevState, currentState) => {
                     return{
@@ -175,7 +175,7 @@ class Product extends Component {
     sortHPrice = async(event, value) => {
         event.preventDefault()
         if(value !== ''){
-            await axios.get(`http://127.0.0.1:3001/products/?sortby=price DESC`)
+            await axios.get(`${process.env.REACT_APP_API_HOST}/products/?sortby=price DESC`)
             .then(res => {
                 this.setState((prevState, currentState) => {
                     return{
@@ -189,7 +189,7 @@ class Product extends Component {
     sortLPrice = async(event, value) => {
         event.preventDefault()
         if(value !== ''){
-            await axios.get(`http://127.0.0.1:3001/products/?sortby=price ASC`)
+            await axios.get(`${process.env.REACT_APP_API_HOST}/products/?sortby=price ASC`)
             .then(res => {
                 this.setState((prevState, currentState) => {
                     return{
@@ -201,7 +201,7 @@ class Product extends Component {
         } 
     }
     getCategory = async() => {
-        await axios.get(`http://127.0.0.1:3001/category`)
+        await axios.get(`${process.env.REACT_APP_API_HOST}/category`)
         .then(res => {
             this.setState({
                 dataCategory: res.data.data
@@ -285,7 +285,7 @@ class Product extends Component {
                     return(
                             <a  key={item.id} onClick={(event) => this.onSelectProduct(event, item)} href="#">      
                             <Panel shaded bordered bodyFill style={{ display: 'inline-block', width: 210, margin:5 }}>
-                            <img src={`http://127.0.0.1:3001/`+`${item.image}`} height="210" />
+                            <img src={`${process.env.REACT_APP_API_HOST}`+`${item.image}`} height="210" />
                             <div style={{padding:12, fontSize:14, color:'#575757', marginTop:10}}>{item.name}</div>
                             <div style={{backgroundColor:'#3498ff', position:'absolute', paddingLeft: 15, paddingRight: 15, paddingTop:3, paddingBottom:5, color:'white', marginTop: -70, marginLeft:10, borderRadius:6}}><NumberFormat value={item.price} displayType={'text'} thousandSeparator={true} prefix={'IDR '} /></div>
                             

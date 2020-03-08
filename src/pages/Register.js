@@ -46,7 +46,7 @@ class Register extends React.Component {
             alert('All requirement must be filled!')
         } else{
             const body = qs.stringify(data)
-            axios.post('http://127.0.0.1:3001/auth/register', body)
+            axios.post(`${process.env.REACT_APP_API_HOST}/auth/register`, body)
             .then(res => {
                 if(res.status === 200) {
                     try{

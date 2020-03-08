@@ -49,7 +49,7 @@ class Invoice extends React.Component {
         order: this.props.order
     }
     const body = qs.stringify(data)
-        axios.post('http://127.0.0.1:3001/orders', body)
+        axios.post(`${process.env.REACT_APP_API_HOST}/orders`, body)
         .then(res => {
             if(res.status === 200) {
               this.setState({ show: false });

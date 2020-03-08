@@ -128,7 +128,7 @@ class EditProduct extends React.Component {
         body.append('id_category', this.state.formValue.id_category)
 
         // console.log(body)
-        axios.put(`http://127.0.0.1:3001/products/${this.props.productId}`, body)
+        axios.put(`${process.env.REACT_APP_API_HOST}/products/${this.props.productId}`, body)
           .then(res => {
             if(res.status === 200) {
               try {

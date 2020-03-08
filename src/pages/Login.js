@@ -41,7 +41,7 @@ class Login extends React.Component {
         } else{
             // const {name, token, email} = this.props.auth.data
             // this.props.dispatch(requestLogin(data, token))
-            axios.post('http://127.0.0.1:3001/auth/login', qs.stringify(data))
+            axios.post(`${process.env.REACT_APP_API_HOST}/auth/login`, qs.stringify(data))
             .then(res => {
                 // console.log(res);
                 if(res.status === 200) {
@@ -68,7 +68,7 @@ class Login extends React.Component {
             <input type='text' placeholder='username' onChange={(event) => this.handleEmail(event)} />
             <input type='password' placeholder='password' onChange={(event) => this.handlePassword(event)} />
             <button onClick={(event) => this.handleSubmitLogin(event)} type='submit'>Login</button>
-            <p className="message">Not registered? <a href="http://127.0.0.1:3000/register">Create an account</a></p>
+            <p className="message">Not registered? <a href="http://18.215.237.81/register">Create an account</a></p>
             </form>
         </div>
         </div>

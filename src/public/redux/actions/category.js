@@ -4,27 +4,27 @@ import axios from 'axios'
 export const getCategory = () => {
   return {
     type: 'GET_CATEGORY',
-    payload: axios.get('http://127.0.0.1:3001/category')
+    payload: axios.get(`${process.env.REACT_APP_API_HOST}/category`)
   }
 }
 
 export const postCategory = (form) => {
   return {
     type: 'POST_CATEGORY',
-    payload: axios.post('http://127.0.0.1:3001/category', form)
+    payload: axios.post(`${process.env.REACT_APP_API_HOST}/category`, form)
   }
 }
 
 export const patchCategory = (idCategory, newValue) => {
   return {
     type: 'PATCH_CATEGORY',
-    payload: axios.patch(`http://127.0.0.1:3001/category/${idCategory}`, newValue)
+    payload: axios.patch(`${process.env.REACT_APP_API_HOST}/${idCategory}`, newValue)
   }
 }
 
 export const deleteCategory = (event, idCategory) => {
   return {
     type: 'DELETE_CATEGORY',
-    payload: axios.delete(`http://127.0.0.1:3001/category/${idCategory}`, event)
+    payload: axios.delete(`${process.env.REACT_APP_API_HOST}/category/${idCategory}`, event)
   }
 }

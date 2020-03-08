@@ -78,7 +78,7 @@ class EditUser extends React.Component {
         alert('Requirement must be filled!')
     } else{
         const body = qs.stringify(data)
-        axios.put(`http://127.0.0.1:3001/users/${this.props.userId}`, body)
+        axios.put(`${process.env.REACT_APP_API_HOST}/users/${this.props.userId}`, body)
         .then(res => {
           if(res.status === 200) {
               try{

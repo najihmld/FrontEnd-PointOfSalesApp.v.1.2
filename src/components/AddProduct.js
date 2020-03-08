@@ -129,7 +129,7 @@ class AddProduct extends React.Component {
         body.append('id_category', this.state.formValue.id_category)
 
         // console.log(body)
-        axios.post('http://127.0.0.1:3001/products', body)
+        axios.post(`${process.env.REACT_APP_API_HOST}/products`, body)
           .then(res => {
             if(res.status === 200) {
               try {
