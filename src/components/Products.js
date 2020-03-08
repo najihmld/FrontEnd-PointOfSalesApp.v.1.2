@@ -285,7 +285,7 @@ class Product extends Component {
                     return(
                             <a  key={item.id} onClick={(event) => this.onSelectProduct(event, item)} href="#">      
                             <Panel shaded bordered bodyFill style={{ display: 'inline-block', width: 210, margin:5 }}>
-                            <img src={`${process.env.REACT_APP_API_HOST}`+`${item.image}`} height="210" />
+                            <img src={`${process.env.REACT_APP_API_HOST}/`+`${item.image}`} height="210" />
                             <div style={{padding:12, fontSize:14, color:'#575757', marginTop:10}}>{item.name}</div>
                             <div style={{backgroundColor:'#3498ff', position:'absolute', paddingLeft: 15, paddingRight: 15, paddingTop:3, paddingBottom:5, color:'white', marginTop: -70, marginLeft:10, borderRadius:6}}><NumberFormat value={item.price} displayType={'text'} thousandSeparator={true} prefix={'IDR '} /></div>
                             
